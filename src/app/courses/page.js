@@ -5,11 +5,11 @@ import dbConnect from '@/lib/db';
 import Course from '@/models/Course';
 
 async function getCourses() {
-    await dbConnect();
-    // Fallback if DB connection fails or no URI
-    if (!process.env.MONGODB_URI) return [];
-
     try {
+        await dbConnect();
+        // Fallback if DB connection fails or no URI
+        if (!process.env.MONGODB_URI) return [];
+
         const courses = await Course.find({}).lean();
         return courses.map(course => ({
             ...course,
