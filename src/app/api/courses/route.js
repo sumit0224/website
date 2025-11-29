@@ -13,8 +13,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
-    await dbConnect();
     try {
+        await dbConnect();
         const body = await request.json();
         const course = await Course.create(body);
         return NextResponse.json(course, { status: 201 });

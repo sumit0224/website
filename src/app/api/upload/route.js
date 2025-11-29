@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import path from 'path';
+import cloudinary from '@/lib/cloudinary';
 
 export async function POST(request) {
     try {
@@ -15,24 +14,24 @@ export async function POST(request) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        // Generate unique filename
-        const timestamp = Date.now();
-        const originalName = file.name.replace(/\s+/g, '-');
-        const filename = `${timestamp}-${originalName}`;
-
-        // Save to public/uploads directory
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-        const filepath = path.join(uploadDir, filename);
-
-        await writeFile(filepath, buffer);
-
-        // Return the public URL
-        const imageUrl = `/uploads/${filename}`;
+        // Upload to Cloudinary using a stream
+        const result = await new Promise((resolve, reject) => {
+            const uploadStream = cloudinary.uploader.upload_stream(
+                {
+                    folder: 'appwars-uploads', // Optional: organize in a folder
+                },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            );
+            uploadStream.end(buffer);
+        });
 
         return NextResponse.json({
             success: true,
-            imageUrl,
-            filename
+            imageUrl: result.secure_url,
+            filename: result.public_id
         });
     } catch (error) {
         console.error('Upload error:', error);

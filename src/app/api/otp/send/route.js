@@ -24,7 +24,7 @@ export async function POST(request) {
 
         // Send Email
         await transporter.sendMail({
-            from: '"Appwars Security" <no-reply@appwars.com>',
+            from: `"Appwars Security" <${process.env.EMAIL_USER}>`,
             to: email,
             subject: 'Your Verification Code',
             html: `
