@@ -1,0 +1,45 @@
+.stats {
+  padding: 2rem 1rem;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.card:hover, .card:focus-within {
+  box-shadow: 0 12px 25px rgb(0 0 0 / 0.15);
+}
+
+.number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2563eb; /* Blue-600 */
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280; /* Gray-500 */
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

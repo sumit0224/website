@@ -1,0 +1,62 @@
+.carouselWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.arrow {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.card:hover .arrow {
+    transform: translateX(5px);
+}
+
+.navBtn {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--foreground);
+    transition: all 0.2s ease;
+    z-index: 10;
+    position: absolute;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navBtn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.prevBtn {
+    left: -20px;
+}
+
+.nextBtn {
+    right: -20px;
+}
+
+@media (max-width: 768px) {
+    .navBtn {
+        display: none;
+        /* Hide buttons on mobile, allow touch scrolling */
+    }
+
+    .carouselTrack {
+        padding: 1rem;
+        /* Add padding for better touch targets */
+    }
+
+    .card {
+        flex: 0 0 240px;
+    }
+}
