@@ -20,11 +20,16 @@ async function getCourse(id) {
 }
 
 export async function generateStaticParams() {
-    await dbConnect();
-    const courses = await Course.find({}, { id: 1 }).lean();
-    return courses.map((course) => ({
-        id: course.id,
-    }));
+    try {
+        await dbConnect();
+        const courses = await Course.find({}, { id: 1 }).lean();
+        return courses.map((course) => ({
+            id: course.id,
+        }));
+    } catch (error) {
+        console.warn('Database connection failed during static generation, falling back to on-demand rendering:', error.message);
+        return [];
+    }
 }
 
 export default async function CourseDetails({ params }) {
