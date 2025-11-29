@@ -127,7 +127,7 @@ export default function CareerCounseling() {
                         </button>
 
                         <h3 className={styles.modalTitle}>Book Counseling Session</h3>
-                        <p className={styles.modalSubtitle}>Fill in your details and we'll get back to you.</p>
+                        <p className={styles.modalSubtitle}>Fill in your details and we&apos;ll get back to you.</p>
 
                         <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.formGroup}>

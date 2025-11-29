@@ -6,11 +6,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'luc
 import styles from './Footer.module.css';
 
 export default function Footer() {
-    const [year, setYear] = useState(2025);
-
-    useEffect(() => {
-        setYear(new Date().getFullYear());
-    }, []);
+    const year = new Date().getFullYear();
 
     return (
         <footer className={styles.footer}>

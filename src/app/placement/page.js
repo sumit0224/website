@@ -38,7 +38,7 @@ export default function Placement() {
                             <div className={styles.studentRole}>SDE at Google</div>
                         </div>
                     </div>
-                    <p className={styles.quote}>"EduPrime's curriculum is top-notch. The hands-on projects helped me crack the interview at Google."</p>
+                    <p className={styles.quote}>&quot;EduPrime&apos;s curriculum is top-notch. The hands-on projects helped me crack the interview at Google.&quot;</p>
                 </div>
 
                 <div className={styles.storyCard}>
@@ -49,7 +49,7 @@ export default function Placement() {
                             <div className={styles.studentRole}>Frontend Dev at Amazon</div>
                         </div>
                     </div>
-                    <p className={styles.quote}>"The mentorship I received was invaluable. My mentor guided me through every step of the preparation."</p>
+                    <p className={styles.quote}>&quot;The mentorship I received was invaluable. My mentor guided me through every step of the preparation.&quot;</p>
                 </div>
 
                 <div className={styles.storyCard}>
@@ -60,7 +60,7 @@ export default function Placement() {
                             <div className={styles.studentRole}>Data Scientist at Microsoft</div>
                         </div>
                     </div>
-                    <p className={styles.quote}>"The Data Science course is very comprehensive. I learned everything from Python to Deep Learning."</p>
+                    <p className={styles.quote}>&quot;The Data Science course is very comprehensive. I learned everything from Python to Deep Learning.&quot;</p>
                 </div>
             </div>
         </div>
