@@ -1,7 +1,9 @@
-import { Outfit } from "next/font/google";
+import { Outfit, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space' });
 
 export const metadata = {
   metadataBase: new URL('https://appwarstechnologies.com'),
@@ -87,7 +89,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={outfit.className}>
+      <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <GoogleTagManager />
         <script
           type="application/ld+json"
