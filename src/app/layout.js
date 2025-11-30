@@ -16,6 +16,12 @@ export const metadata = {
   authors: [{ name: 'Appwars Technologies' }],
   creator: 'Appwars Technologies',
   publisher: 'Appwars Technologies',
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Appwars Technologies",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -59,11 +65,16 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#2563eb",
+};
+
 import Navbar from "@/components/Navbar";
 import Flyer from "@/components/Flyer";
 import Footer from "@/components/Footer";
 import ToasterClient from "@/components/ToasterClient";
 import GoogleTagManager from "@/components/GoogleTagManager";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt";
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -101,6 +112,7 @@ export default function RootLayout({ children }) {
         <main style={{ minHeight: '100vh' }}>
           {children}
         </main>
+        <PwaInstallPrompt />
         <Footer />
       </body>
     </html>
