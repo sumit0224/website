@@ -1,9 +1,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
-    padding-top: 100px;
-    /* Account for fixed navbar */
+    padding: 2rem 1rem;
 }
 
 .hero {
@@ -23,15 +21,13 @@
 .title {
     font-size: 3rem;
     font-weight: 800;
+    color: #1e293b;
     line-height: 1.2;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .description {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+    font-size: 1.125rem;
+    color: #64748b;
     line-height: 1.6;
 }
 
@@ -45,26 +41,21 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-weight: 600;
-    color: var(--text);
+    color: #475569;
+    font-weight: 500;
 }
 
 .imageWrapper {
     position: relative;
-    border-radius: 20px;
+    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
 
 .image {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
-}
-
-.imageWrapper:hover .image {
-    transform: scale(1.05);
 }
 
 .contentGrid {
@@ -73,30 +64,11 @@
     gap: 4rem;
 }
 
-.mainContent {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
 .sectionTitle {
-    font-size: 2rem;
+    font-size: 1.875rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.sectionTitle::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
+    color: #1e293b;
+    margin-bottom: 2rem;
 }
 
 .syllabusList {
@@ -108,83 +80,100 @@
 }
 
 .syllabusItem {
-    background: var(--surface);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 1rem;
-    transition: all 0.2s ease;
-}
-
-.syllabusItem:hover {
-    transform: translateX(10px);
-    border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: #334155;
 }
 
 .syllabusIndex {
-    background: var(--primary-light);
-    color: var(--primary);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .sidebar {
-    position: sticky;
-    top: 120px;
-    height: fit-content;
-    background: var(--surface);
+    background: #f8fafc;
     padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
 }
 
 .sidebarTitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
+    color: #1e293b;
     margin-bottom: 1.5rem;
 }
 
 .sidebarList {
     list-style: none;
     padding: 0;
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .sidebarItem {
     display: flex;
     justify-content: space-between;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+.sidebarItem strong {
+    color: #1e293b;
 }
 
 .enrollBtn {
     display: block;
     width: 100%;
     padding: 1rem;
-    background: var(--primary);
+    background: #3b82f6;
     color: white;
     text-align: center;
-    text-decoration: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-weight: 600;
+    text-decoration: none;
     transition: background 0.2s;
 }
 
 .enrollBtn:hover {
-    background: var(--primary-dark);
+    background: #2563eb;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.actualPrice {
+    text-decoration: line-through;
+    color: #94a3b8;
+    font-size: 1.25rem;
+}
+
+.discountedPrice {
+    color: #16a34a;
+    font-weight: 800;
+    font-size: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -198,6 +187,6 @@
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 }

@@ -53,6 +53,14 @@ export default function PopularCourses() {
                                 <h3>{course.title}</h3>
                                 <p className={styles.level}>{course.level}</p>
                                 <p className={styles.duration}>{course.duration}</p>
+                                <div className={styles.priceContainer}>
+                                    {course.actualPrice && (
+                                        <span className={styles.actualPrice}>₹{course.actualPrice}</span>
+                                    )}
+                                    {course.discountedPrice && (
+                                        <span className={styles.discountedPrice}>₹{course.discountedPrice}</span>
+                                    )}
+                                </div>
                             </div>
                         </Link>
                     ))}

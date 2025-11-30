@@ -62,6 +62,14 @@ export default async function CourseDetails({ params }) {
                             <span>{course.level}</span>
                         </div>
                     </div>
+                    <div className={styles.priceContainer}>
+                        {course.actualPrice && (
+                            <span className={styles.actualPrice}>₹{course.actualPrice}</span>
+                        )}
+                        {course.discountedPrice && (
+                            <span className={styles.discountedPrice}>₹{course.discountedPrice}</span>
+                        )}
+                    </div>
                 </div>
                 <div className={styles.imageWrapper}>
                     <img src={course.image} alt={course.title} className={styles.image} />

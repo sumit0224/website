@@ -38,7 +38,7 @@ export default function Admin() {
     const [uploading, setUploading] = useState(false);
 
     const [newCourse, setNewCourse] = useState({
-        id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: ''
+        id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: '', actualPrice: '', discountedPrice: ''
     });
     const [newBlog, setNewBlog] = useState({
         title: '', excerpt: '', date: '', author: '', image: ''
@@ -95,12 +95,12 @@ export default function Admin() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (username === 'admin' && password === 'admin') {
+        if (username === 'admin' && password === 'Sumit@0924') {
             localStorage.setItem('isAdmin', 'true');
             setIsAuthenticated(true);
             toast.success('Logged in successfully');
         } else {
-            toast.error('Invalid credentials (use admin/admin)');
+            toast.error('Invalid credentials ');
         }
     };
 
@@ -155,7 +155,7 @@ export default function Admin() {
         if (res.ok) {
             toast.success('Course added successfully');
             setShowCourseForm(false);
-            setNewCourse({ id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: '' });
+            setNewCourse({ id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: '', actualPrice: '', discountedPrice: '' });
             fetchData();
         } else {
             toast.error('Failed to add course');
@@ -501,6 +501,14 @@ export default function Admin() {
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Level</label>
                                     <input className={styles.input} placeholder="e.g., Beginner to Advanced" value={newCourse.level} onChange={e => setNewCourse({ ...newCourse, level: e.target.value })} required />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Actual Price (₹)</label>
+                                    <input type="number" className={styles.input} placeholder="e.g., 5000" value={newCourse.actualPrice} onChange={e => setNewCourse({ ...newCourse, actualPrice: e.target.value })} />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Discounted Price (₹)</label>
+                                    <input type="number" className={styles.input} placeholder="e.g., 3000" value={newCourse.discountedPrice} onChange={e => setNewCourse({ ...newCourse, discountedPrice: e.target.value })} />
                                 </div>
 
                                 <div className={styles.imageUploadContainer}>
@@ -959,6 +967,14 @@ export default function Admin() {
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>Level</label>
                                 <input className={styles.input} placeholder="Level" value={editingCourse.level} onChange={e => setEditingCourse({ ...editingCourse, level: e.target.value })} required />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Actual Price (₹)</label>
+                                <input type="number" className={styles.input} placeholder="e.g., 5000" value={editingCourse.actualPrice || ''} onChange={e => setEditingCourse({ ...editingCourse, actualPrice: e.target.value })} />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Discounted Price (₹)</label>
+                                <input type="number" className={styles.input} placeholder="e.g., 3000" value={editingCourse.discountedPrice || ''} onChange={e => setEditingCourse({ ...editingCourse, discountedPrice: e.target.value })} />
                             </div>
 
                             <div className={styles.imageUploadContainer}>
