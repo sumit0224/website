@@ -28,48 +28,9 @@ jobs:
         run: npm run build
 
       # ------------------------------------------------------------------
-      # DEPLOYMENT STEPS (Uncomment/Configure based on your target)
+      # DEPLOYMENT STEPS
       # ------------------------------------------------------------------
-
-      # OPTION 1: Vercel Deployment
-      # - name: Deploy to Vercel
-      #   uses: amondnet/vercel-action@v20
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-      #     vercel-args: '--prod'
-
-      # OPTION 2: Docker Build & Push (e.g., to Docker Hub or GHCR)
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v3
-      #
-      # - name: Login to Docker Hub
-      #   uses: docker/login-action@v3
-      #   with:
-      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-      #
-      # - name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: user/app:latest
-
-      # OPTION 3: SSH to VPS and Pull
-      # - name: Deploy via SSH
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     script: |
-      #       cd /path/to/app
-      #       git pull
-      #       npm ci
-      #       npm run build
-      #       pm2 restart app
+      # Add your deployment steps here (e.g., Vercel, Docker, SSH)
 
       - name: Placeholder Deploy Message
         run: echo "Build successful. Configure the steps above to deploy to your specific target."
