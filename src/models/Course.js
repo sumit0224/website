@@ -7,7 +7,11 @@ const CourseSchema = new mongoose.Schema({
     duration: { type: String, required: true },
     level: { type: String, required: true },
     image: { type: String, required: true },
-    syllabus: { type: [String], required: true },
+    syllabus: [{
+        title: { type: String, required: true },
+        topics: [String]
+    }],
+    syllabusPdf: { type: String, required: false },
     actualPrice: { type: Number, required: false },
     discountedPrice: { type: Number, required: false },
 }, { timestamps: true });

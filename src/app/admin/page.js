@@ -38,7 +38,7 @@ export default function Admin() {
     const [uploading, setUploading] = useState(false);
 
     const [newCourse, setNewCourse] = useState({
-        id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: '', actualPrice: '', discountedPrice: ''
+        id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: [{ title: '', topics: [''] }], syllabusPdf: '', actualPrice: '', discountedPrice: ''
     });
     const [newBlog, setNewBlog] = useState({
         title: '', excerpt: '', date: '', author: '', image: ''
@@ -143,8 +143,8 @@ export default function Admin() {
     // Course handlers
     const handleAddCourse = async (e) => {
         e.preventDefault();
-        const syllabusArray = newCourse.syllabus.split(',').map(s => s.trim());
-        const courseData = { ...newCourse, syllabus: syllabusArray };
+        // Syllabus is already structured in state
+        const courseData = { ...newCourse };
 
         const res = await fetch('/api/courses', {
             method: 'POST',
@@ -155,7 +155,7 @@ export default function Admin() {
         if (res.ok) {
             toast.success('Course added successfully');
             setShowCourseForm(false);
-            setNewCourse({ id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: '', actualPrice: '', discountedPrice: '' });
+            setNewCourse({ id: '', title: '', description: '', duration: '', level: '', image: '', syllabus: [{ title: '', topics: [''] }], syllabusPdf: '', actualPrice: '', discountedPrice: '' });
             fetchData();
         } else {
             toast.error('Failed to add course');
@@ -164,8 +164,8 @@ export default function Admin() {
 
     const handleUpdateCourse = async (e) => {
         e.preventDefault();
-        const syllabusArray = editingCourse.syllabus;
-        const courseData = { ...editingCourse, syllabus: Array.isArray(syllabusArray) ? syllabusArray : syllabusArray.split(',').map(s => s.trim()) };
+        // Syllabus is already structured in state
+        const courseData = { ...editingCourse };
 
         const res = await fetch(`/api/courses/${editingCourse.id}`, {
             method: 'PUT',
@@ -534,7 +534,76 @@ export default function Admin() {
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Syllabus</label>
-                                    <textarea className={styles.input} placeholder="Enter topics separated by commas (e.g., HTML, CSS, JavaScript)" value={newCourse.syllabus} onChange={e => setNewCourse({ ...newCourse, syllabus: e.target.value })} required rows={3} />
+                                    {newCourse.syllabus.map((module, mIndex) => (
+                                        <div key={mIndex} className={styles.moduleCard} style={{ border: '1px solid #e2e8f0', padding: '1rem', marginBottom: '1rem', borderRadius: '0.5rem' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                                <input
+                                                    className={styles.input}
+                                                    placeholder={`Module ${mIndex + 1} Title`}
+                                                    value={module.title}
+                                                    onChange={e => {
+                                                        const updatedSyllabus = [...newCourse.syllabus];
+                                                        updatedSyllabus[mIndex].title = e.target.value;
+                                                        setNewCourse({ ...newCourse, syllabus: updatedSyllabus });
+                                                    }}
+                                                    required
+                                                />
+                                                <button type="button" onClick={() => {
+                                                    const updatedSyllabus = newCourse.syllabus.filter((_, i) => i !== mIndex);
+                                                    setNewCourse({ ...newCourse, syllabus: updatedSyllabus });
+                                                }} style={{ color: 'red', marginLeft: '0.5rem' }}>Remove Module</button>
+                                            </div>
+                                            {module.topics.map((topic, tIndex) => (
+                                                <div key={tIndex} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                                    <input
+                                                        className={styles.input}
+                                                        placeholder="Topic"
+                                                        value={topic}
+                                                        onChange={e => {
+                                                            const updatedSyllabus = [...newCourse.syllabus];
+                                                            updatedSyllabus[mIndex].topics[tIndex] = e.target.value;
+                                                            setNewCourse({ ...newCourse, syllabus: updatedSyllabus });
+                                                        }}
+                                                        required
+                                                    />
+                                                    <button type="button" onClick={() => {
+                                                        const updatedSyllabus = [...newCourse.syllabus];
+                                                        updatedSyllabus[mIndex].topics = updatedSyllabus[mIndex].topics.filter((_, i) => i !== tIndex);
+                                                        setNewCourse({ ...newCourse, syllabus: updatedSyllabus });
+                                                    }} style={{ color: 'red' }}>X</button>
+                                                </div>
+                                            ))}
+                                            <button type="button" onClick={() => {
+                                                const updatedSyllabus = [...newCourse.syllabus];
+                                                updatedSyllabus[mIndex].topics.push('');
+                                                setNewCourse({ ...newCourse, syllabus: updatedSyllabus });
+                                            }} style={{ fontSize: '0.875rem', color: '#3b82f6' }}>+ Add Topic</button>
+                                        </div>
+                                    ))}
+                                    <button type="button" onClick={() => setNewCourse({ ...newCourse, syllabus: [...newCourse.syllabus, { title: '', topics: [''] }] })} className={styles.btnSecondary} style={{ width: '100%', marginTop: '0.5rem' }}>
+                                        + Add Module
+                                    </button>
+                                </div>
+
+                                <div className={styles.imageUploadContainer}>
+                                    <label className={styles.label}>Syllabus PDF (Optional)</label>
+                                    <input
+                                        type="file"
+                                        accept="application/pdf"
+                                        className={styles.fileInput}
+                                        onChange={async (e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                const pdfUrl = await handleImageUpload(file); // Reusing image upload for PDF as it likely just uploads to cloud/server
+                                                if (pdfUrl) setNewCourse({ ...newCourse, syllabusPdf: pdfUrl });
+                                            }
+                                        }}
+                                    />
+                                    {newCourse.syllabusPdf && (
+                                        <div className={styles.imagePreview}>
+                                            <a href={newCourse.syllabusPdf} target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>View Uploaded PDF</a>
+                                        </div>
+                                    )}
                                 </div>
                                 <button type="submit" className={styles.btn} disabled={uploading}>
                                     {uploading ? 'Uploading...' : 'Save Course'}
@@ -1000,7 +1069,79 @@ export default function Admin() {
 
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>Syllabus</label>
-                                <textarea className={styles.input} placeholder="Syllabus (comma separated)" value={Array.isArray(editingCourse.syllabus) ? editingCourse.syllabus.join(', ') : editingCourse.syllabus} onChange={e => setEditingCourse({ ...editingCourse, syllabus: e.target.value })} required rows={3} />
+                                {(Array.isArray(editingCourse.syllabus) ? editingCourse.syllabus : []).map((module, mIndex) => (
+                                    <div key={mIndex} className={styles.moduleCard} style={{ border: '1px solid #e2e8f0', padding: '1rem', marginBottom: '1rem', borderRadius: '0.5rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                            <input
+                                                className={styles.input}
+                                                placeholder={`Module ${mIndex + 1} Title`}
+                                                value={module.title}
+                                                onChange={e => {
+                                                    const updatedSyllabus = [...editingCourse.syllabus];
+                                                    updatedSyllabus[mIndex].title = e.target.value;
+                                                    setEditingCourse({ ...editingCourse, syllabus: updatedSyllabus });
+                                                }}
+                                                required
+                                            />
+                                            <button type="button" onClick={() => {
+                                                const updatedSyllabus = editingCourse.syllabus.filter((_, i) => i !== mIndex);
+                                                setEditingCourse({ ...editingCourse, syllabus: updatedSyllabus });
+                                            }} style={{ color: 'red', marginLeft: '0.5rem' }}>Remove Module</button>
+                                        </div>
+                                        {module.topics.map((topic, tIndex) => (
+                                            <div key={tIndex} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                                <input
+                                                    className={styles.input}
+                                                    placeholder="Topic"
+                                                    value={topic}
+                                                    onChange={e => {
+                                                        const updatedSyllabus = [...editingCourse.syllabus];
+                                                        updatedSyllabus[mIndex].topics[tIndex] = e.target.value;
+                                                        setEditingCourse({ ...editingCourse, syllabus: updatedSyllabus });
+                                                    }}
+                                                    required
+                                                />
+                                                <button type="button" onClick={() => {
+                                                    const updatedSyllabus = [...editingCourse.syllabus];
+                                                    updatedSyllabus[mIndex].topics = updatedSyllabus[mIndex].topics.filter((_, i) => i !== tIndex);
+                                                    setEditingCourse({ ...editingCourse, syllabus: updatedSyllabus });
+                                                }} style={{ color: 'red' }}>X</button>
+                                            </div>
+                                        ))}
+                                        <button type="button" onClick={() => {
+                                            const updatedSyllabus = [...editingCourse.syllabus];
+                                            updatedSyllabus[mIndex].topics.push('');
+                                            setEditingCourse({ ...editingCourse, syllabus: updatedSyllabus });
+                                        }} style={{ fontSize: '0.875rem', color: '#3b82f6' }}>+ Add Topic</button>
+                                    </div>
+                                ))}
+                                <button type="button" onClick={() => {
+                                    const currentSyllabus = Array.isArray(editingCourse.syllabus) ? editingCourse.syllabus : [];
+                                    setEditingCourse({ ...editingCourse, syllabus: [...currentSyllabus, { title: '', topics: [''] }] });
+                                }} className={styles.btnSecondary} style={{ width: '100%', marginTop: '0.5rem' }}>
+                                    + Add Module
+                                </button>
+                            </div>
+
+                            <div className={styles.imageUploadContainer}>
+                                <label className={styles.label}>Syllabus PDF (Optional)</label>
+                                <input
+                                    type="file"
+                                    accept="application/pdf"
+                                    className={styles.fileInput}
+                                    onChange={async (e) => {
+                                        const file = e.target.files[0];
+                                        if (file) {
+                                            const pdfUrl = await handleImageUpload(file);
+                                            if (pdfUrl) setEditingCourse({ ...editingCourse, syllabusPdf: pdfUrl });
+                                        }
+                                    }}
+                                />
+                                {editingCourse.syllabusPdf && (
+                                    <div className={styles.imagePreview}>
+                                        <a href={editingCourse.syllabusPdf} target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>View Uploaded PDF</a>
+                                    </div>
+                                )}
                             </div>
                             <div className={styles.modalActions}>
                                 <button type="submit" className={styles.btn} disabled={uploading}>

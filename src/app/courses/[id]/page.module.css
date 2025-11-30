@@ -71,36 +71,59 @@
     margin-bottom: 2rem;
 }
 
-.syllabusList {
-    list-style: none;
-    padding: 0;
+/* Accordion Styles */
+.syllabusContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.syllabusItem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f8fafc;
+.accordionItem {
+    border: 1px solid #e2e8f0;
     border-radius: 0.5rem;
-    font-weight: 500;
-    color: #334155;
+    overflow: hidden;
 }
 
-.syllabusIndex {
-    width: 2rem;
-    height: 2rem;
+.details[open] .summary {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.summary {
+    padding: 1rem;
+    background: #f8fafc;
+    cursor: pointer;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background: #3b82f6;
-    color: white;
-    border-radius: 50%;
-    font-size: 0.875rem;
     font-weight: 600;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+.summary::-webkit-details-marker {
+    display: none;
+}
+
+.moduleTitle {
+    font-size: 1.1rem;
+}
+
+.topicList {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    background: white;
+}
+
+.topicItem {
+    padding: 0.5rem 0;
+    color: #475569;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.topicItem:last-child {
+    border-bottom: none;
 }
 
 .sidebar {
@@ -151,10 +174,29 @@
     font-weight: 600;
     text-decoration: none;
     transition: background 0.2s;
+    margin-bottom: 1rem;
 }
 
 .enrollBtn:hover {
     background: #2563eb;
+}
+
+.downloadBtn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    color: #3b82f6;
+    text-align: center;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid #3b82f6;
+    transition: all 0.2s;
+}
+
+.downloadBtn:hover {
+    background: #eff6ff;
 }
 
 .priceContainer {

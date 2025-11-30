@@ -79,22 +79,32 @@ export default async function CourseDetails({ params }) {
             {/* Main Content Grid */}
             <div className={styles.contentGrid}>
                 <div className={styles.mainContent}>
-                    <div className={styles.section}>
-                        <h2 className={styles.sectionTitle}>Course Syllabus</h2>
-                        <ul className={styles.syllabusList}>
-                            {course.syllabus.map((topic, index) => (
-                                <li key={index} className={styles.syllabusItem}>
-                                    <span className={styles.syllabusIndex}>{index + 1}</span>
-                                    <span>{topic}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <h2 className={styles.sectionTitle}>Course Syllabus</h2>
+                    <div className={styles.syllabusContainer}>
+                        {Array.isArray(course.syllabus) ? (
+                            course.syllabus.map((module, index) => (
+                                <div key={index} className={styles.accordionItem}>
+                                    <details className={styles.details}>
+                                        <summary className={styles.summary}>
+                                            <span className={styles.moduleTitle}>Module {index + 1}: {module.title}</span>
+                                            <span className={styles.icon}>▼</span>
+                                        </summary>
+                                        <ul className={styles.topicList}>
+                                            {module.topics.map((topic, tIndex) => (
+                                                <li key={tIndex} className={styles.topicItem}>• {topic}</li>
+                                            ))}
+                                        </ul>
+                                    </details>
+                                </div>
+                            ))
+                        ) : (
+                            <p>Syllabus not available in structured format.</p>
+                        )}
                     </div>
                 </div>
 
-                {/* Sidebar */}
                 <aside className={styles.sidebar}>
-                    <h3 className={styles.sidebarTitle}>Course Details</h3>
+                    <h3 className={styles.sidebarTitle}>Course Features</h3>
                     <ul className={styles.sidebarList}>
                         <li className={styles.sidebarItem}>
                             <span>Duration</span>
@@ -105,8 +115,8 @@ export default async function CourseDetails({ params }) {
                             <strong>{course.level}</strong>
                         </li>
                         <li className={styles.sidebarItem}>
-                            <span>Mode</span>
-                            <strong>Online / Offline</strong>
+                            <span>Access</span>
+                            <strong>Lifetime</strong>
                         </li>
                         <li className={styles.sidebarItem}>
                             <span>Certificate</span>
@@ -116,6 +126,11 @@ export default async function CourseDetails({ params }) {
                     <Link href="/enroll" className={styles.enrollBtn}>
                         Enroll Now
                     </Link>
+                    {course.syllabusPdf && (
+                        <a href={course.syllabusPdf} target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
+                            Download Syllabus PDF
+                        </a>
+                    )}
                 </aside>
             </div>
         </div>
