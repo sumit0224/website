@@ -7,8 +7,13 @@ import { Menu, X } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { navLinks } from '@/data/siteData';
 
+import { usePathname } from 'next/navigation';
+
 export default function Navbar() {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+
+    if (pathname.startsWith('/admin')) return null;
 
     const toggleMenu = () => setIsOpen(!isOpen);
 

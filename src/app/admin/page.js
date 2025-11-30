@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import ConfirmDialog from '@/components/ConfirmDialog';
+import Link from 'next/link';
 import styles from './page.module.css';
 
 export default function Admin() {
@@ -400,6 +401,9 @@ export default function Admin() {
     if (!isAuthenticated) {
         return (
             <div className={styles.loginContainer}>
+                <Link href="/" className={styles.goBackBtn} style={{ position: 'absolute', top: '20px', left: '20px', textDecoration: 'none', color: '#333', fontWeight: 'bold' }}>
+                    ← Go Back Home
+                </Link>
                 <form className={styles.loginForm} onSubmit={handleLogin}>
                     <h2 className={styles.loginTitle}>Admin Login</h2>
                     <input
@@ -468,6 +472,9 @@ export default function Admin() {
                 >
                     Logout
                 </button>
+                <Link href="/" className={styles.navBtn} style={{ marginTop: '1rem', textAlign: 'center', textDecoration: 'none' }}>
+                    Go Back Home
+                </Link>
             </aside>
 
             <main className={styles.main}>

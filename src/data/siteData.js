@@ -1,19 +1,23 @@
 export const faqItems = [
     {
-        title: 'What courses do you offer?',
-        content: 'We offer a wide range of courses in Web Development, Data Science, AI/ML, Cloud Computing, and more. Check our Courses page for the full list.'
+        title: 'What types of training programs does Appwars Technologies offer?',
+        content: 'Appwars Technologies offers a wide range of training programs including Web Development (MERN Stack), Data Science, Data Analytics, Digital Marketing, Java (Core & Advanced), Python, AI/ML, Cloud Computing, and more. Courses are available for beginners to advanced learners.'
     },
     {
-        title: 'Is there any placement assistance?',
-        content: 'Yes, we provide 100% placement assistance. We help you with resume building, mock interviews, and connect you with our hiring partners.'
+        title: 'Do you provide certifications after course completion?',
+        content: 'Yes, we provide industry-recognized certificates upon successful completion of training. These certificates are valuable for job placements and professional growth.'
     },
     {
-        title: 'Can I learn at my own pace?',
-        content: 'Absolutely! Our courses are self-paced with lifetime access to the content. You also get live mentorship sessions for doubt clearance.'
+        title: 'Are live projects and practical sessions included in the training?',
+        content: 'Absolutely! All our courses include hands-on training with live projects to ensure practical exposure. This helps students gain real-world experience and build a strong portfolio.'
     },
     {
-        title: 'Do I get a certificate?',
-        content: 'Yes, upon successful completion of the course and projects, you will receive an industry-recognized certificate.'
+        title: 'What are the class sizes and modes of training?',
+        content: 'We maintain small batch sizes of maximum 15 students to ensure personalized attention. Training is available in both online and offline modes, offering flexibility for all learners.'
+    },
+    {
+        title: 'Is placement assistance provided after the course?',
+        content: 'Yes, Appwars Technologies offers 100% placement assistance, including resume building, interview preparation, and access to placement drives with leading companies.'
     }
 ];
 

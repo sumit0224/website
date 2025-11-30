@@ -1,0 +1,54 @@
+.flyer {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 1001;
+    /* Above navbar */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.link {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.closeBtn:hover {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .flyer {
+        padding-right: 2.5rem;
+        /* Make space for close button */
+        font-size: 0.8rem;
+    }
+}

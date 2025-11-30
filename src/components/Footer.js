@@ -21,12 +21,14 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.column}>
-                    <h3>Our Services</h3>
+                    <h3>Our Courses</h3>
                     <div className={styles.links}>
-                        <Link href="/summer-training" className={styles.link}>Summer Internship</Link>
-                        <Link href="/winter-training" className={styles.link}>Winter Training</Link>
-                        <Link href="/industrial-training" className={styles.link}>Industrial Training</Link>
-                        <Link href="/corporate-training" className={styles.link}>Corporate Training</Link>
+                        <Link href="/data-science-ai" className={styles.link}>Data Science & AI</Link>
+                        <Link href="/data-analytics" className={styles.link}>Data Analytics</Link>
+                        <Link href="/mern-full-stack" className={styles.link}>MERN Full Stack Development</Link>
+                        <Link href="/java-full-stack" className={styles.link}>Java Full Stack Development</Link>
+                        <Link href="/python-full-stack" className={styles.link}>Python Full Stack Development</Link>
+                        
                     </div>
                 </div>
 
@@ -34,13 +36,17 @@ export default function Footer() {
                     <h3>Contact Us</h3>
                     <div className={styles.links}>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Mail size={18} /> info@appwarstechnologies.com
+                            <Mail size={18} />
+                            <Link href="mailto:info@appwarstechnologies.com">info@appwarstechnologies.com</Link>
                         </div>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Phone size={18} /> +91-9911169001
+                            <Phone size={18} />
+                            <Link href="tel:+919911169001">+91-9911169001</Link>
+                            <Link href="tel:+918743019452">+91-8743019452</Link>
                         </div>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <MapPin size={18} /> B-3, Sector 2, Noida, UP
+                            <MapPin size={46} />
+                            <Link href="https://www.google.com/maps/place/appwarstechnologies">C-20, 1st Floor, Noida Sector 2, U.P. - 201301 ( Near Nirulas Hotel and Noida Sector - 15 Metro )</Link>
                         </div>
                     </div>
                 </div>
@@ -58,6 +64,7 @@ export default function Footer() {
 
             <div className={styles.bottom}>
                 <p>&copy; {year} Appwars Technologies. All rights reserved.</p>
+                <p>Designed and Developed by <a href="tel:+919310513770" target="_blank" rel="noopener noreferrer">Sumit Gautam</a></p>
             </div>
         </footer>
     );

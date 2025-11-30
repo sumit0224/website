@@ -58,6 +58,7 @@ export const metadata = {
 };
 
 import Navbar from "@/components/Navbar";
+import Flyer from "@/components/Flyer";
 import Footer from "@/components/Footer";
 import ToasterClient from "@/components/ToasterClient";
 import GoogleTagManager from "@/components/GoogleTagManager";
@@ -93,6 +94,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ToasterClient />
+        <Flyer />
         <Navbar />
         <main style={{ minHeight: '100vh' }}>
           {children}
