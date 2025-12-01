@@ -19,24 +19,27 @@ export default function Admin() {
     const [alumni, setAlumni] = useState([]);
     const [gallery, setGallery] = useState([]);
     const [counseling, setCounseling] = useState([]);
+    const [achievements, setAchievements] = useState([]);
 
-    // Form states
+
     const [showCourseForm, setShowCourseForm] = useState(false);
     const [showBlogForm, setShowBlogForm] = useState(false);
     const [showAlumniForm, setShowAlumniForm] = useState(false);
     const [showGalleryForm, setShowGalleryForm] = useState(false);
+    const [showAchievementForm, setShowAchievementForm] = useState(false);
 
-    // Edit states
+
     const [editingCourse, setEditingCourse] = useState(null);
     const [editingBlog, setEditingBlog] = useState(null);
     const [editingGallery, setEditingGallery] = useState(null);
     const [editingAlumni, setEditingAlumni] = useState(null);
+    const [editingAchievement, setEditingAchievement] = useState(null);
 
-    // View modal states
+
     const [viewingEnrollment, setViewingEnrollment] = useState(null);
     const [viewingCounseling, setViewingCounseling] = useState(null);
 
-    // Upload states
+
     const [uploading, setUploading] = useState(false);
 
     const [newCourse, setNewCourse] = useState({
@@ -51,8 +54,11 @@ export default function Admin() {
     const [newGallery, setNewGallery] = useState({
         title: '', description: '', image: '', category: ''
     });
+    const [newAchievement, setNewAchievement] = useState({
+        title: '', image: '', order: 0
+    });
 
-    // Confirmation dialog state
+
     const [confirmDialog, setConfirmDialog] = useState({
         isOpen: false,
         title: '',
@@ -92,6 +98,9 @@ export default function Admin() {
         } else if (activeTab === 'counseling') {
             const res = await fetch('/api/counseling');
             if (res.ok) setCounseling(await res.json());
+        } else if (activeTab === 'achievements') {
+            const res = await fetch('/api/achievements');
+            if (res.ok) setAchievements(await res.json());
         }
     };
 
@@ -112,7 +121,7 @@ export default function Admin() {
         toast.success('Logged out');
     };
 
-    // Image upload handler
+
     const handleImageUpload = async (file) => {
         if (!file) return null;
 
@@ -142,10 +151,10 @@ export default function Admin() {
         }
     };
 
-    // Course handlers
+
     const handleAddCourse = async (e) => {
         e.preventDefault();
-        // Syllabus is already structured in state
+
         const courseData = { ...newCourse };
 
         const res = await fetch('/api/courses', {
@@ -166,7 +175,7 @@ export default function Admin() {
 
     const handleUpdateCourse = async (e) => {
         e.preventDefault();
-        // Syllabus is already structured in state
+
         const courseData = { ...editingCourse };
 
         const res = await fetch(`/api/courses/${editingCourse.id}`, {
@@ -202,7 +211,7 @@ export default function Admin() {
         });
     };
 
-    // Blog handlers
+
     const handleAddBlog = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/blogs', {
@@ -256,7 +265,7 @@ export default function Admin() {
         });
     };
 
-    // Gallery handlers
+
     const handleAddGallery = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/gallery', {
@@ -310,7 +319,7 @@ export default function Admin() {
         });
     };
 
-    // Alumni handlers
+
     const handleAddAlumni = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/alumni', {
@@ -364,7 +373,61 @@ export default function Admin() {
         });
     };
 
-    // Counseling handlers
+
+    const handleAddAchievement = async (e) => {
+        e.preventDefault();
+        const res = await fetch('/api/achievements', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newAchievement)
+        });
+
+        if (res.ok) {
+            toast.success('Achievement added successfully');
+            setShowAchievementForm(false);
+            setNewAchievement({ title: '', image: '', order: 0 });
+            fetchData();
+        } else {
+            toast.error('Failed to add achievement');
+        }
+    };
+
+    const handleUpdateAchievement = async (e) => {
+        e.preventDefault();
+        const res = await fetch(`/api/achievements/${editingAchievement._id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(editingAchievement)
+        });
+
+        if (res.ok) {
+            toast.success('Achievement updated successfully');
+            setEditingAchievement(null);
+            fetchData();
+        } else {
+            toast.error('Failed to update achievement');
+        }
+    };
+
+    const handleDeleteAchievement = (id) => {
+        setConfirmDialog({
+            isOpen: true,
+            title: 'Delete Achievement',
+            message: 'Are you sure you want to delete this achievement? This action cannot be undone.',
+            onConfirm: async () => {
+                setConfirmDialog({ ...confirmDialog, isOpen: false });
+                const res = await fetch(`/api/achievements/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    toast.success('Achievement deleted');
+                    fetchData();
+                } else {
+                    toast.error('Failed to delete achievement');
+                }
+            }
+        });
+    };
+
+
     const handleDeleteCounseling = (id) => {
         setConfirmDialog({
             isOpen: true,
@@ -464,6 +527,12 @@ export default function Admin() {
                     onClick={() => { setActiveTab('alumni'); setIsSidebarOpen(false); }}
                 >
                     Manage Alumni
+                </button>
+                <button
+                    className={`${styles.navBtn} ${activeTab === 'achievements' ? styles.active : ''}`}
+                    onClick={() => { setActiveTab('achievements'); setIsSidebarOpen(false); }}
+                >
+                    Manage Achievements
                 </button>
                 <button
                     className={styles.navBtn}
@@ -602,7 +671,7 @@ export default function Admin() {
                                         onChange={async (e) => {
                                             const file = e.target.files[0];
                                             if (file) {
-                                                const pdfUrl = await handleImageUpload(file); // Reusing image upload for PDF as it likely just uploads to cloud/server
+                                                const pdfUrl = await handleImageUpload(file);
                                                 if (pdfUrl) setNewCourse({ ...newCourse, syllabusPdf: pdfUrl });
                                             }
                                         }}
@@ -993,7 +1062,7 @@ export default function Admin() {
                 }
             </main >
 
-            {/* View Counseling Modal */}
+
             {
                 viewingCounseling && (
                     <div className={styles.modal} onClick={() => setViewingCounseling(null)}>
@@ -1032,7 +1101,7 @@ export default function Admin() {
                 )
             }
 
-            {/* Edit Course Modal */}
+
             {
                 editingCourse && (
                     <div className={styles.modal} onClick={() => setEditingCourse(null)}>
@@ -1177,7 +1246,7 @@ export default function Admin() {
                 )
             }
 
-            {/* Edit Blog Modal */}
+
             {
                 editingBlog && (
                     <div className={styles.modal} onClick={() => setEditingBlog(null)}>
@@ -1234,7 +1303,7 @@ export default function Admin() {
                 )
             }
 
-            {/* Edit Gallery Modal */}
+
             {
                 editingGallery && (
                     <div className={styles.modal} onClick={() => setEditingGallery(null)}>
@@ -1293,7 +1362,7 @@ export default function Admin() {
                 )
             }
 
-            {/* View Enrollment Modal */}
+
             {
                 viewingEnrollment && (
                     <div className={styles.modal} onClick={() => setViewingEnrollment(null)}>
@@ -1332,7 +1401,7 @@ export default function Admin() {
                 )
             }
 
-            {/* Edit Alumni Modal */}
+
             {
                 editingAlumni && (
                     <div className={styles.modal} onClick={() => setEditingAlumni(null)}>

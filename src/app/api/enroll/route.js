@@ -18,7 +18,7 @@ export async function POST(request) {
     try {
         const body = await request.json();
 
-        // Validate input
+
         const validationResult = enrollmentSchema.safeParse(body);
         if (!validationResult.success) {
             return NextResponse.json(
@@ -29,12 +29,12 @@ export async function POST(request) {
 
         const { name, email, phone, course, message } = validationResult.data;
 
-        // Save to Database
+
         await Enrollment.create({ name, email, phone, course, message });
 
 
 
-        // Email to Admin
+
         const adminMailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
@@ -56,7 +56,7 @@ Message: ${message || 'N/A'}
 `,
         };
 
-        // Email to User
+
         const userMailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
@@ -73,7 +73,7 @@ Message: ${message || 'N/A'}
       `,
         };
 
-        // Send emails
+
         await transporter.sendMail(adminMailOptions);
         await transporter.sendMail(userMailOptions);
 

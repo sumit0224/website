@@ -10,15 +10,15 @@ export async function POST(request) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        // Convert file to buffer
+
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        // Upload to Cloudinary using a stream
+
         const result = await new Promise((resolve, reject) => {
             const uploadStream = cloudinary.uploader.upload_stream(
                 {
-                    folder: 'appwars-uploads', // Optional: organize in a folder
+                    folder: 'appwars-uploads',
                 },
                 (error, result) => {
                     if (error) reject(error);

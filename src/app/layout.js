@@ -36,7 +36,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg', // Ensure this image exists or is added later
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Appwars Technologies',
@@ -47,7 +47,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Appwars Technologies',
     description: 'Best IT Training Institute with 100% Placement Assistance.',
-    images: ['/twitter-image.jpg'], // Ensure this image exists or is added later
+    images: ['/twitter-image.jpg'],
   },
   robots: {
     index: true,

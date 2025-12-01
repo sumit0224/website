@@ -12,17 +12,17 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Email is required' }, { status: 400 });
         }
 
-        // Generate 6-digit OTP
+
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-        // Save or Update OTP in DB
+
         await Otp.findOneAndUpdate(
             { email },
             { otp, createdAt: Date.now() },
             { upsert: true, new: true }
         );
 
-        // Send Email
+
         await transporter.sendMail({
             from: `"Appwars Security" <${process.env.EMAIL_USER}>`,
             to: email,

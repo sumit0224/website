@@ -7,7 +7,7 @@ import Course from '@/models/Course';
 async function getCourses() {
     try {
         await dbConnect();
-        // Fallback if DB connection fails or no URI
+
         if (!process.env.MONGODB_URI) return [];
 
         const courses = await Course.find({}).lean();

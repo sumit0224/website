@@ -17,8 +17,8 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Invalid or expired OTP' }, { status: 400 });
         }
 
-        // Optional: Delete OTP after successful verification to prevent reuse
-        // await Otp.deleteOne({ _id: validOtp._id });
+
+
 
         return NextResponse.json({ message: 'Email verified successfully' });
     } catch (error) {

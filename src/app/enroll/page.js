@@ -13,7 +13,7 @@ export default function Enroll() {
         message: ''
     });
 
-    // OTP States
+
     const [otp, setOtp] = useState('');
     const [isOtpSent, setIsOtpSent] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
@@ -22,7 +22,7 @@ export default function Enroll() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        // Reset verification if email changes
+
         if (e.target.name === 'email') {
             setIsVerified(false);
             setIsOtpSent(false);
@@ -70,7 +70,7 @@ export default function Enroll() {
             if (res.ok) {
                 toast.success('Email verified successfully!');
                 setIsVerified(true);
-                setIsOtpSent(false); // Hide OTP field after verification
+                setIsOtpSent(false);
             } else {
                 toast.error('Invalid OTP. Please try again.');
             }
@@ -139,7 +139,7 @@ export default function Enroll() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            disabled={isVerified} // Lock email after verification
+                            disabled={isVerified}
                         />
                         {!isVerified && (
                             <button
