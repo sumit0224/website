@@ -41,7 +41,10 @@ const CourseSchema = new mongoose.Schema({
     duration: { type: String, required: true },
     level: { type: String, required: true },
     image: { type: String, required: true },
-    syllabus: { type: [String], required: true },
+    syllabus: [{
+        title: { type: String, required: true },
+        topics: [String]
+    }],
 }, { timestamps: true });
 
 const Blog = mongoose.models.Blog || mongoose.model('Blog', BlogSchema);
@@ -49,31 +52,109 @@ const Course = mongoose.models.Course || mongoose.model('Course', CourseSchema);
 
 const courses = [
     {
-        id: 'web-dev-fullstack',
-        title: 'Full Stack Web Development',
-        description: 'Master the MERN stack (MongoDB, Express, React, Node.js) and build modern web applications.',
-        duration: '6 Months',
-        level: 'Beginner to Advanced',
-        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-        syllabus: ['HTML/CSS/JS', 'React.js', 'Node.js & Express', 'MongoDB', 'Deployment'],
-    },
-    {
-        id: 'data-science-python',
-        title: 'Data Science with Python',
-        description: 'Learn data analysis, visualization, and machine learning using Python libraries like Pandas and Scikit-learn.',
-        duration: '5 Months',
-        level: 'Intermediate',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-        syllabus: ['Python Basics', 'Pandas & NumPy', 'Data Visualization', 'Machine Learning', 'Deep Learning'],
-    },
-    {
-        id: 'ai-ml-mastery',
-        title: 'AI & Machine Learning Mastery',
-        description: 'Deep dive into Artificial Intelligence and Neural Networks. Build your own AI models.',
+        id: 'data-science-ai',
+        title: 'Data Science and AI',
+        description: 'Master Data Science and Artificial Intelligence with Python, Machine Learning, and Deep Learning.',
         duration: '8 Months',
         level: 'Advanced',
-        image: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80',
-        syllabus: ['Neural Networks', 'TensorFlow', 'Computer Vision', 'NLP', 'Generative AI'],
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Introduction to Data Science', topics: ['Python Basics', 'Data Structures', 'NumPy & Pandas'] },
+            { title: 'Data Analysis & Visualization', topics: ['Matplotlib', 'Seaborn', 'Exploratory Data Analysis'] },
+            { title: 'Machine Learning', topics: ['Regression', 'Classification', 'Clustering', 'Scikit-learn'] },
+            { title: 'Deep Learning', topics: ['Neural Networks', 'TensorFlow', 'Keras', 'CNN & RNN'] },
+            { title: 'AI Capstone Project', topics: ['Real-world problem solving', 'Model Deployment'] }
+        ],
+    },
+    {
+        id: 'data-analytics',
+        title: 'Data Analytics',
+        description: 'Learn to analyze data, create visualizations, and make data-driven decisions using tools like Excel, SQL, and Power BI.',
+        duration: '5 Months',
+        level: 'Beginner to Intermediate',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Excel for Data Analysis', topics: ['Advanced Formulas', 'Pivot Tables', 'Data Cleaning'] },
+            { title: 'SQL Fundamentals', topics: ['Queries', 'Joins', 'Aggregations', 'Database Design'] },
+            { title: 'Data Visualization', topics: ['Power BI Basics', 'DAX', 'Dashboard Creation'] },
+            { title: 'Statistical Analysis', topics: ['Descriptive Statistics', 'Hypothesis Testing'] },
+            { title: 'Business Intelligence', topics: ['Reporting', 'Data Storytelling'] }
+        ],
+    },
+    {
+        id: 'java-full-stack',
+        title: 'Java Full Stack',
+        description: 'Become a Full Stack Developer with Java. Learn Core Java, Spring Boot, Hibernate, and React/Angular for the frontend.',
+        duration: '6 Months',
+        level: 'Intermediate',
+        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Core Java', topics: ['OOP Concepts', 'Collections Framework', 'Multithreading'] },
+            { title: 'Backend Development', topics: ['Spring Boot', 'REST APIs', 'Microservices'] },
+            { title: 'Database', topics: ['Hibernate', 'JPA', 'SQL', 'Database Design'] },
+            { title: 'Frontend Development', topics: ['HTML/CSS/JS', 'React or Angular', 'State Management'] },
+            { title: 'Deployment', topics: ['Docker', 'CI/CD', 'Cloud Deployment'] }
+        ],
+    },
+    {
+        id: 'mern-full-stack',
+        title: 'MERN Full Stack',
+        description: 'Master the MERN stack (MongoDB, Express, React, Node.js) and build modern, scalable web applications.',
+        duration: '6 Months',
+        level: 'Intermediate to Advanced',
+        image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Frontend Fundamentals', topics: ['HTML5', 'CSS3', 'JavaScript ES6+'] },
+            { title: 'React.js', topics: ['Components', 'Hooks', 'Redux', 'React Router'] },
+            { title: 'Node.js & Express', topics: ['Server Setup', 'API Development', 'Middleware'] },
+            { title: 'Database', topics: ['MongoDB', 'Mongoose', 'Aggregation'] },
+            { title: 'Full Stack Deployment', topics: ['Authentication', 'Hosting', 'Performance Optimization'] }
+        ],
+    },
+    {
+        id: 'python-full-stack',
+        title: 'Python Full Stack',
+        description: 'Learn Full Stack Development with Python. Master Django/Flask for backend and React for frontend.',
+        duration: '6 Months',
+        level: 'Intermediate',
+        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Python Programming', topics: ['Syntax', 'Data Structures', 'OOP', 'Modules'] },
+            { title: 'Backend Frameworks', topics: ['Django', 'Flask', 'ORM', 'REST APIs'] },
+            { title: 'Frontend Integration', topics: ['React.js', 'Axios', 'State Management'] },
+            { title: 'Database', topics: ['PostgreSQL', 'SQLite', 'Database Modeling'] },
+            { title: 'Deployment', topics: ['Gunicorn', 'Nginx', 'Docker'] }
+        ],
+    },
+    {
+        id: 'digital-marketing',
+        title: 'Digital Marketing',
+        description: 'Become a Digital Marketing Expert. Learn SEO, SEM, Social Media Marketing, and Content Strategy.',
+        duration: '3 Months',
+        level: 'Beginner',
+        image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'SEO', topics: ['On-page SEO', 'Off-page SEO', 'Keyword Research'] },
+            { title: 'SEM & PPC', topics: ['Google Ads', 'Campaign Management', 'Bidding Strategies'] },
+            { title: 'Social Media Marketing', topics: ['Facebook/Instagram Ads', 'LinkedIn Marketing', 'Content Calendar'] },
+            { title: 'Content Marketing', topics: ['Blogging', 'Copywriting', 'Video Marketing'] },
+            { title: 'Analytics', topics: ['Google Analytics', 'Reporting', 'Conversion Tracking'] }
+        ],
+    },
+    {
+        id: 'graphic-designing',
+        title: 'Graphic Designing',
+        description: 'Unleash your creativity. Learn Photoshop, Illustrator, InDesign, and design principles.',
+        duration: '4 Months',
+        level: 'Beginner',
+        image: 'https://images.unsplash.com/photo-1626785774573-4b799314346d?auto=format&fit=crop&w=800&q=80',
+        syllabus: [
+            { title: 'Design Principles', topics: ['Color Theory', 'Typography', 'Layout', 'Composition'] },
+            { title: 'Adobe Photoshop', topics: ['Photo Editing', 'Retouching', 'Digital Art'] },
+            { title: 'Adobe Illustrator', topics: ['Vector Graphics', 'Logo Design', 'Illustration'] },
+            { title: 'Adobe InDesign', topics: ['Print Design', 'Brochures', 'Magazines'] },
+            { title: 'Portfolio', topics: ['Project Presentation', 'Branding', 'Freelancing Basics'] }
+        ],
     },
 ];
 

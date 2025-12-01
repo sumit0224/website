@@ -126,11 +126,7 @@ export default async function CourseDetails({ params }) {
                     <Link href="/enroll" className={styles.enrollBtn}>
                         Enroll Now
                     </Link>
-                    {course.syllabusPdf && (
-                        <a href={course.syllabusPdf} target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
-                            Download Syllabus PDF
-                        </a>
-                    )}
+
                 </aside>
             </div>
         </div>
