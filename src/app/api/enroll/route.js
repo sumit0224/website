@@ -60,7 +60,7 @@ Message: ${message || 'N/A'}
         const userMailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: 'Enrollment Received - EduPrime',
+            subject: 'Enrollment Received - AppWARS',
             text: `Hi ${name},\n\nThank you for enrolling in our ${course} course. We have received your request and will get back to you shortly.\n\nBest Regards,\nEduPrime Team`,
             html: `
         <h3>Thank you for enrolling!</h3>
