@@ -113,139 +113,144 @@ export default function Enroll() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Enroll Now</h1>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <div className={styles.group}>
-                    <label className={styles.label} htmlFor="name">Full Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className={styles.input}
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
+            <div className={styles.wrapper}>
+                <div className={styles.imageSection}>
+                    <img
+                        src="/enroll-hero.png"
+                        alt="Students learning online"
+                        className={styles.image}
                     />
                 </div>
 
-                <div className={styles.group}>
-                    <label className={styles.label} htmlFor="email">Email Address</label>
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className={styles.input}
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            disabled={isVerified}
-                        />
-                        {!isVerified && (
-                            <button
-                                type="button"
-                                onClick={handleSendOtp}
-                                disabled={sendingOtp || !formData.email}
-                                style={{
-                                    padding: '0 15px',
-                                    backgroundColor: '#2563eb',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer',
-                                    whiteSpace: 'nowrap'
-                                }}
-                            >
-                                {sendingOtp ? 'Sending...' : 'Verify'}
-                            </button>
-                        )}
-                        {isVerified && (
-                            <span style={{ color: 'green', alignSelf: 'center', fontWeight: 'bold' }}>✓ Verified</span>
-                        )}
-                    </div>
-                </div>
+                <div className={styles.formSection}>
+                    <h1 className={styles.title}>Start Your Journey</h1>
+                    <p className={styles.subtitle}>Join thousands of students mastering new skills today.</p>
 
-                {isOtpSent && !isVerified && (
-                    <div className={styles.group}>
-                        <label className={styles.label}>Enter OTP</label>
-                        <div style={{ display: 'flex', gap: '10px' }}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <div className={styles.group}>
+                            <label className={styles.label} htmlFor="name">Full Name</label>
                             <input
                                 type="text"
+                                id="name"
+                                name="name"
                                 className={styles.input}
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
-                                placeholder="Enter 6-digit OTP"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                placeholder="John Doe"
                             />
-                            <button
-                                type="button"
-                                onClick={handleVerifyOtp}
-                                disabled={verifyingOtp}
-                                style={{
-                                    padding: '0 15px',
-                                    backgroundColor: '#10b981',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                {verifyingOtp ? 'Checking...' : 'Confirm'}
-                            </button>
                         </div>
-                    </div>
-                )}
 
-                <div className={styles.group}>
-                    <label className={styles.label} htmlFor="phone">Phone Number</label>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        className={styles.input}
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
+                        <div className={styles.group}>
+                            <label className={styles.label} htmlFor="email">Email Address</label>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className={styles.input}
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isVerified}
+                                    placeholder="john@example.com"
+                                    style={{ flex: 1 }}
+                                />
+                                {!isVerified && (
+                                    <button
+                                        type="button"
+                                        onClick={handleSendOtp}
+                                        disabled={sendingOtp || !formData.email}
+                                        className={styles.verifyBtn}
+                                    >
+                                        {sendingOtp ? 'Sending...' : 'Verify Email'}
+                                    </button>
+                                )}
+                                {isVerified && (
+                                    <span style={{ color: '#10b981', alignSelf: 'center', fontWeight: 'bold', whiteSpace: 'nowrap' }}>✓ Verified</span>
+                                )}
+                            </div>
+                        </div>
+
+                        {isOtpSent && !isVerified && (
+                            <div className={styles.group}>
+                                <label className={styles.label}>Enter OTP</label>
+                                <div style={{ display: 'flex', gap: '10px' }}>
+                                    <input
+                                        type="text"
+                                        className={styles.input}
+                                        value={otp}
+                                        onChange={(e) => setOtp(e.target.value)}
+                                        placeholder="Enter 6-digit OTP"
+                                        style={{ flex: 1 }}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={handleVerifyOtp}
+                                        disabled={verifyingOtp}
+                                        className={styles.verifyBtn}
+                                        style={{ backgroundColor: '#10b981' }}
+                                    >
+                                        {verifyingOtp ? 'Checking...' : 'Confirm OTP'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className={styles.group}>
+                            <label className={styles.label} htmlFor="phone">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                className={styles.input}
+                                value={formData.phone}
+                                onChange={handleChange}
+                                required
+                                placeholder="+1 (555) 000-0000"
+                            />
+                        </div>
+
+                        <div className={styles.group}>
+                            <label className={styles.label} htmlFor="course">Select Course</label>
+                            <select
+                                id="course"
+                                name="course"
+                                className={styles.select}
+                                value={formData.course}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">-- Select a Course --</option>
+                                <option value="web-development">Full Stack Web Development</option>
+                                <option value="data-science">Data Science & AI</option>
+                                <option value="cloud-computing">Cloud Computing with AWS</option>
+                            </select>
+                        </div>
+
+                        <div className={styles.group}>
+                            <label className={styles.label} htmlFor="message">Message (Optional)</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                className={styles.textarea}
+                                rows="3"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Tell us about your goals..."
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            className={styles.submitBtn}
+                            disabled={!isVerified}
+                        >
+                            Submit Application
+                        </button>
+                    </form>
                 </div>
-
-                <div className={styles.group}>
-                    <label className={styles.label} htmlFor="course">Select Course</label>
-                    <select
-                        id="course"
-                        name="course"
-                        className={styles.select}
-                        value={formData.course}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">-- Select a Course --</option>
-                        <option value="web-development">Full Stack Web Development</option>
-                        <option value="data-science">Data Science & AI</option>
-                        <option value="cloud-computing">Cloud Computing with AWS</option>
-                    </select>
-                </div>
-
-                <div className={styles.group}>
-                    <label className={styles.label} htmlFor="message">Message (Optional)</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        className={styles.textarea}
-                        rows="4"
-                        value={formData.message}
-                        onChange={handleChange}
-                    ></textarea>
-                </div>
-
-                <button
-                    type="submit"
-                    className={styles.submitBtn}
-                    disabled={!isVerified}
-                    style={{ opacity: !isVerified ? 0.5 : 1, cursor: !isVerified ? 'not-allowed' : 'pointer' }}
-                >
-                    Submit Application
-                </button>
-            </form>
+            </div>
         </div>
     );
 }
