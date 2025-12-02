@@ -11,12 +11,10 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import PopularCourses from '@/components/PopularCourses';
 import CareerCounseling from '@/components/CareerCounseling';
 import Achievements from '@/components/Achievements';
-
 import Alumni from '@/components/Alumni';
 import Marquee from '@/components/Marquee';
 import Accordion from '@/components/Accordion';
 import styles from './page.module.css';
-
 import { faqItems } from '@/data/siteData';
 
 gsap.registerPlugin(ScrollTrigger);

@@ -24,7 +24,7 @@ export default function Navbar() {
                     src="/logo.png"
                     alt="Developer Mind School Logo"
                     width={120}
-                    height={30}
+                    height={40}
                     priority
                     style={{ height: 'auto', width: 'auto' }}
                 />
