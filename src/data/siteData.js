@@ -1,7 +1,7 @@
 export const faqItems = [
     {
-        title: 'What types of training programs does Appwars Technologies offer?',
-        content: 'Appwars Technologies offers a wide range of training programs including Web Development (MERN Stack), Data Science, Data Analytics, Digital Marketing, Java (Core & Advanced), Python, AI/ML, Cloud Computing, and more. Courses are available for beginners to advanced learners.'
+        title: 'What types of training programs does Developer Mind School offer?',
+        content: 'Developer Mind School offers a wide range of training programs including Web Development (MERN Stack), Data Science, Data Analytics, Digital Marketing, Java (Core & Advanced), Python, AI/ML, Cloud Computing, and more. Courses are available for beginners to advanced learners.'
     },
     {
         title: 'Do you provide certifications after course completion?',
@@ -17,7 +17,7 @@ export const faqItems = [
     },
     {
         title: 'Is placement assistance provided after the course?',
-        content: 'Yes, Appwars Technologies offers 100% placement assistance, including resume building, interview preparation, and access to placement drives with leading companies.'
+        content: 'Yes, Developer Mind School offers 100% placement assistance, including resume building, interview preparation, and access to placement drives with leading companies.'
     }
 ];
 

@@ -21,10 +21,10 @@ export default function Navbar() {
         <nav className={styles.navbar}>
             <Link href="/" className={styles.logo}>
                 <Image
-                    src="https://appwarstechnologies.com/wp-content/uploads/2022/12/appwars-logo.webp"
-                    alt="Appwars Technologies Logo"
-                    width={150}
-                    height={50}
+                    src="/logo.png"
+                    alt="Developer Mind School Logo"
+                    width={120}
+                    height={30}
                     priority
                     style={{ height: 'auto', width: 'auto' }}
                 />

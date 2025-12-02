@@ -36,7 +36,7 @@ export default function Placement() {
     const placementNews = [
         {
             id: 1,
-            title: "Appwars Technologies Achieves 95% Placement Rate for 2024 Batch",
+            title: "Developer Mind School Achieves 95% Placement Rate for 2024 Batch",
             date: "November 15, 2024",
             excerpt: "We are proud to announce record-breaking placement numbers for our latest graduating batch across all disciplines."
         },

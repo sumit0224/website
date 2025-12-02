@@ -8,19 +8,19 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space
 export const metadata = {
   metadataBase: new URL('https://appwarstechnologies.com'),
   title: {
-    default: 'Appwars Technologies - Best IT Training Institute',
-    template: '%s | Appwars Technologies',
+    default: 'Developer Mind School - Best IT Training Institute',
+    template: '%s | Developer Mind School',
   },
-  description: 'Appwars Technologies offers industry-leading IT training in Web Development, Data Science, AI/ML, and more with 100% placement assistance.',
-  keywords: ['IT Training', 'Web Development', 'Data Science', 'Appwars Technologies', 'Coding Courses', 'Placement Assistance', 'Software Training Institute'],
-  authors: [{ name: 'Appwars Technologies' }],
-  creator: 'Appwars Technologies',
-  publisher: 'Appwars Technologies',
+  description: 'Developer Mind School offers industry-leading IT training in Web Development, Data Science, AI/ML, and more with 100% placement assistance.',
+  keywords: ['IT Training', 'Web Development', 'Data Science', 'Developer Mind School', 'Coding Courses', 'Placement Assistance', 'Software Training Institute'],
+  authors: [{ name: 'Developer Mind School' }],
+  creator: 'Developer Mind School',
+  publisher: 'Developer Mind School',
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Appwars Technologies",
+    title: "Developer Mind School",
   },
   formatDetection: {
     email: false,
@@ -28,10 +28,10 @@ export const metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Appwars Technologies - Best IT Training Institute',
+    title: 'Developer Mind School - Best IT Training Institute',
     description: 'Master the latest technologies with our industry-expert led courses. 100% Placement Assistance.',
     url: 'https://appwarstechnologies.com',
-    siteName: 'Appwars Technologies',
+    siteName: 'Developer Mind School',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -39,13 +39,13 @@ export const metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Appwars Technologies',
+        alt: 'Developer Mind School',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Appwars Technologies',
+    title: 'Developer Mind School',
     description: 'Best IT Training Institute with 100% Placement Assistance.',
     images: ['/twitter-image.jpg'],
   },
@@ -80,7 +80,7 @@ export default function RootLayout({ children }) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Appwars Technologies',
+    name: 'Developer Mind School',
     url: 'https://appwarstechnologies.com',
     logo: 'https://appwarstechnologies.com/logo.png',
     sameAs: [
@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
         <main style={{ minHeight: '100vh' }}>
           {children}
         </main>
-     
+
         <Footer />
       </body>
     </html>

@@ -7,7 +7,7 @@ export default function About() {
         <div className={styles.container}>
             {/* Hero Section */}
             <section className={styles.hero}>
-                <img src="/about-hero.png" alt="Appwars Technologies Office" className={styles.heroImage} />
+                <img src="/about-hero.png" alt="Developer Mind School Office" className={styles.heroImage} />
                 <div className={styles.heroOverlay}></div>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>Empowering the Next Generation of Tech Leaders</h1>
@@ -21,15 +21,15 @@ export default function About() {
             <section className={styles.statsSection}>
                 <div className={styles.statsGrid}>
                     <div className={styles.statCard}>
-                        <span className={styles.statNumber}>5000+</span>
+                        <span className={styles.statNumber}>1000+</span>
                         <span className={styles.statLabel}>Students Trained</span>
                     </div>
                     <div className={styles.statCard}>
-                        <span className={styles.statNumber}>50+</span>
+                        <span className={styles.statNumber}>10+</span>
                         <span className={styles.statLabel}>Expert Instructors</span>
                     </div>
                     <div className={styles.statCard}>
-                        <span className={styles.statNumber}>100+</span>
+                        <span className={styles.statNumber}>10+</span>
                         <span className={styles.statLabel}>Corporate Partners</span>
                     </div>
                     <div className={styles.statCard}>
@@ -44,7 +44,7 @@ export default function About() {
                 <div className={styles.missionContent}>
                     <h2 className={styles.sectionTitle}>Our Mission</h2>
                     <p className={styles.text}>
-                        At Appwars Technologies, we believe that quality education is the foundation of a successful career.
+                        At Developer Mind School, we believe that quality education is the foundation of a successful career.
                         Our mission is to democratize access to high-quality technical training, making it accessible to learners
                         from all backgrounds.
                     </p>
@@ -120,7 +120,7 @@ export default function About() {
                 <div className={styles.ctaContent}>
                     <h2 className={styles.ctaTitle}>Ready to Start Your Journey?</h2>
                     <p className={styles.ctaText}>
-                        Join thousands of successful graduates who have transformed their careers with Appwars Technologies.
+                        Join thousands of successful graduates who have transformed their careers with Developer Mind School.
                     </p>
                     <Link href="/enroll" className={styles.ctaButton}>
                         Enroll Now <ArrowRight size={20} style={{ verticalAlign: 'middle', marginLeft: '5px' }} />

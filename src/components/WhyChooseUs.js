@@ -37,7 +37,7 @@ const features = [
 export default function WhyChooseUs() {
     return (
         <section className={styles.section}>
-            <h2 className={styles.title}>Why Choose Appwars Technologies?</h2>
+            <h2 className={styles.title}>Why Choose Developer Mind?</h2>
             <div className={styles.grid}>
                 {features.map((feature, index) => (
                     <div key={index} className={styles.card}>

@@ -13,7 +13,7 @@ export default function Footer() {
             <div className={styles.content}>
                 <div className={styles.column}>
                     <Link href="/" className={styles.logo}>
-                        <img src="https://appwarstechnologies.com/wp-content/uploads/2022/12/appwars-logo.webp" alt="Appwars Technologies Logo" />
+                        <img src="/logo.png" alt="Developer mind Logo" />
                     </Link>
                     <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>
                         Empowering students with industry-ready skills and placement assistance. Join us to shape your future.
@@ -37,16 +37,16 @@ export default function Footer() {
                     <div className={styles.links}>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Mail size={18} />
-                            <Link href="mailto:info@appwarstechnologies.com">info@appwarstechnologies.com</Link>
+                            <Link href="mailto:info@dm3school.in">info@dm3school.com</Link>
                         </div>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <Phone size={18} />
-                            <Link href="tel:+919911169001">+91-9911169001</Link>
-                            <Link href="tel:+918743019452">+91-8743019452</Link>
+                            <Link href="tel:+919310513770">+91-9310513770</Link>
+                            
                         </div>
                         <div className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <MapPin size={46} />
-                            <Link href="https://www.google.com/maps/place/appwarstechnologies">C-20, 1st Floor, Noida Sector 2, U.P. - 201301 ( Near Nirulas Hotel and Noida Sector - 15 Metro )</Link>
+                            <Link href="https://www.google.com/maps/place/Dm3school.in">C-20, 1st Floor, Noida Sector 2, U.P. - 201301 ( Near Nirulas Hotel and Noida Sector - 15 Metro )</Link>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.bottom}>
-                <p>&copy; {year} Appwars Technologies. All rights reserved.</p>
+                <p>&copy; {year} Developer Mind. All rights reserved.</p>
                 <p>Designed and Developed by <a href="tel:+919310513770" target="_blank" rel="noopener noreferrer">Sumit Gautam</a></p>
             </div>
         </footer>

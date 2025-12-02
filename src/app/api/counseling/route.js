@@ -36,12 +36,12 @@ export async function POST(request) {
 
             // Send Confirmation to User
             await transporter.sendMail({
-                from: '"Appwars Technologies" <no-reply@appwars.com>',
+                from: '"Developer Mind School" <no-reply@appwars.com>',
                 to: body.email,
                 subject: 'We received your counseling request',
                 html: `
                     <h3>Hi ${body.name},</h3>
-                    <p>Thank you for reaching out to Appwars Technologies.</p>
+                    <p>Thank you for reaching out to Developer Mind School.</p>
                     <p>We have received your request for a free career counseling session. One of our experts will contact you shortly.</p>
                     <br>
                     <p>Best Regards,</p>
