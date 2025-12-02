@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space' });
 
 export const metadata = {
-  metadataBase: new URL('https://appwarstechnologies.com'),
+  metadataBase: new URL('https://dm3school.com'),
   title: {
     default: 'Developer Mind School - Best IT Training Institute',
     template: '%s | Developer Mind School',
@@ -30,7 +30,7 @@ export const metadata = {
   openGraph: {
     title: 'Developer Mind School - Best IT Training Institute',
     description: 'Master the latest technologies with our industry-expert led courses. 100% Placement Assistance.',
-    url: 'https://appwarstechnologies.com',
+    url: 'https://dm3school.com',
     siteName: 'Developer Mind School',
     locale: 'en_US',
     type: 'website',
@@ -81,8 +81,8 @@ export default function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Developer Mind School',
-    url: 'https://appwarstechnologies.com',
-    logo: 'https://appwarstechnologies.com/logo.png',
+    url: 'https://dm3school.com',
+    logo: 'https://dm3school.com/logo.png',
     sameAs: [
       'https://www.facebook.com/appwarstechnologies',
       'https://twitter.com/appwarstech',

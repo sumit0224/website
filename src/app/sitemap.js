@@ -1,5 +1,5 @@
 export default function sitemap() {
-    const baseUrl = 'https://appwarstechnologies.com';
+    const baseUrl = 'https://dm3school.com';
 
     // Static routes
     const routes = [

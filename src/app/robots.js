@@ -5,6 +5,6 @@ export default function robots() {
             allow: '/',
             disallow: '/admin/',
         },
-        sitemap: 'https://appwarstechnologies.com/sitemap.xml',
+        sitemap: 'https://dm3school.com/sitemap.xml',
     };
 }
